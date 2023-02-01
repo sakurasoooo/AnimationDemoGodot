@@ -1,0 +1,70 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Imports/HorizontalDoor.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Door.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 11.5, 24.3333 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "Open"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("Door Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6 ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Door Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 11.5, 16 )
+
+[node name="Door" type="Area2D"]
+scale = Vector2( 1.5, 1.5 )
+collision_layer = 2048
+collision_mask = 2
+script = ExtResource( 2 )
+
+[node name="Door Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+hframes = 8
+vframes = 2
+
+[node name="Door Collider" type="CollisionShape2D" parent="."]
+position = Vector2( -0.5, 8.33333 )
+shape = SubResource( 1 )
+
+[node name="Door Animation" type="AnimationPlayer" parent="."]
+anims/Open = SubResource( 3 )
+anims/RESET = SubResource( 4 )
+
+[node name="Door Body" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="Door Body Collider" type="CollisionShape2D" parent="Door Body"]
+position = Vector2( -0.5, 0 )
+shape = SubResource( 2 )
+
+[connection signal="body_entered" from="." to="." method="_on_Door_body_entered"]
+[connection signal="animation_finished" from="Door Animation" to="." method="_on_Door_Animation_animation_finished"]
