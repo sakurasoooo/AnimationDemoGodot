@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/8bit獲得1.mp3-6e164b7e54bd885f3f90642188cd9df2.mp3str"
+
+[deps]
+
+source_file="res://Zero/Assets/8bit獲得1.mp3"
+dest_files=[ "res://.import/8bit獲得1.mp3-6e164b7e54bd885f3f90642188cd9df2.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

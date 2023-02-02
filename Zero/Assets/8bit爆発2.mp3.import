@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/8bit爆発2.mp3-fd8b9870570e715ec4a3743bb7fb1285.mp3str"
+
+[deps]
+
+source_file="res://Zero/Assets/8bit爆発2.mp3"
+dest_files=[ "res://.import/8bit爆発2.mp3-fd8b9870570e715ec4a3743bb7fb1285.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

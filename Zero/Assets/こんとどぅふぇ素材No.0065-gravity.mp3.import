@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/こんとどぅふぇ素材No.0065-gravity.mp3-1217041cd0f6c6a9279a110119e65043.mp3str"
+
+[deps]
+
+source_file="res://Zero/Assets/こんとどぅふぇ素材No.0065-gravity.mp3"
+dest_files=[ "res://.import/こんとどぅふぇ素材No.0065-gravity.mp3-1217041cd0f6c6a9279a110119e65043.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

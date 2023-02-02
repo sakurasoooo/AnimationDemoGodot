@@ -14,4 +14,5 @@ func _on_Door_body_entered(body):
 
 
 func _on_Door_Animation_animation_finished(anim_name):
-	get_tree().change_scene("res://Scenes/NewLevel.tscn")
+	yield(get_tree().create_timer(1), "timeout")
+	get_tree().change_scene("res://Scenes/Thank.tscn")

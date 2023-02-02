@@ -1,0 +1,19 @@
+[gd_scene format=2]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="RichTextLabel" type="Label" parent="."]
+anchor_left = 0.539
+anchor_top = 0.54
+anchor_right = 0.548
+anchor_bottom = 0.544
+margin_left = -121.72
+margin_top = -78.8
+margin_right = 93.28
+margin_bottom = 57.2
+text = "Thanks For Playing"
+align = 1
+valign = 1
+uppercase = true

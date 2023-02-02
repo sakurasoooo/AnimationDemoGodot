@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Imports/Laboratory.tres" type="TileSet" id=1]
 [ext_resource path="res://Objects/Door.tscn" type="PackedScene" id=2]
@@ -9,6 +9,8 @@
 [ext_resource path="res://Zero/UpArrow.tres" type="Texture" id=7]
 [ext_resource path="res://Zero/LeftArrow.tres" type="Texture" id=8]
 [ext_resource path="res://Zero/Assets/pistol.png" type="Texture" id=9]
+[ext_resource path="res://Zero/Assets/8bit獲得1.mp3" type="AudioStream" id=10]
+[ext_resource path="res://Objects/EnemyAlt.tscn" type="PackedScene" id=11]
 
 [sub_resource type="AtlasTexture" id=12]
 flags = 4
@@ -190,11 +192,50 @@ tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 10.9 ),
+"times": PoolRealArray( 6, 10.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "get_gun"
+}, {
+"args": [  ],
+"method": "play_branchA"
+} ]
+}
+tracks/7/type = "audio"
+tracks/7/path = NodePath("SFX")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"clips": [  ],
+"times": PoolRealArray(  )
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("SFX:playing")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 4.8, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/9/type = "method"
+tracks/9/path = NodePath("YSort/EnemyAlternate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 7.2 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
-"method": "play_branchA"
+"method": "change"
 } ]
 }
 
@@ -297,6 +338,18 @@ tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("SFX:playing")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
@@ -428,7 +481,10 @@ position = Vector2( 448, 288 )
 
 [node name="PlayerSprites" parent="YSort/StaringPoint/Player" index="1"]
 animation = "RunLeft"
-frame = 2
+frame = 0
+
+[node name="EnemyAlternate" parent="YSort" instance=ExtResource( 11 )]
+position = Vector2( 376, 240 )
 
 [node name="FX" type="AnimatedSprite" parent="YSort"]
 visible = false
@@ -437,14 +493,15 @@ position = Vector2( 400, 43 )
 z_index = 1
 frames = SubResource( 10 )
 animation = "Get"
+frame = 1
 playing = true
 
 [node name="Item" type="AnimatedSprite" parent="YSort"]
+visible = false
 modulate = Color( 1, 0.984314, 0, 1 )
 position = Vector2( 398, 43 )
 frames = SubResource( 10 )
 animation = "Shine"
-frame = 3
 playing = true
 
 [node name="Choose" type="Control" parent="."]
@@ -461,6 +518,7 @@ margin_bottom = 273.0
 [node name="UpButton" type="TextureButton" parent="Choose"]
 margin_right = 40.0
 margin_bottom = 40.0
+action_mode = 0
 texture_normal = ExtResource( 7 )
 
 [node name="LeftButton" type="TextureButton" parent="Choose"]
@@ -468,6 +526,7 @@ margin_left = -39.0
 margin_top = 41.0
 margin_right = 1.0
 margin_bottom = 81.0
+action_mode = 0
 texture_normal = ExtResource( 8 )
 
 [node name="Label" type="Label" parent="Choose"]
@@ -486,6 +545,10 @@ anims/Start = SubResource( 2 )
 
 [node name="BGM" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
+
+[node name="SFX" type="AudioStreamPlayer2D" parent="."]
+position = Vector2( 400, 46 )
+stream = ExtResource( 10 )
 
 [connection signal="pressed" from="Choose/UpButton" to="." method="_on_UpButton_pressed"]
 [connection signal="pressed" from="Choose/LeftButton" to="." method="_on_LeftButton_pressed"]

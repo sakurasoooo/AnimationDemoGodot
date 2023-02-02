@@ -5,7 +5,6 @@ onready var choiceButtonLayer = $Choose
 
 func _ready():
 	scenePlayer.play("Start")
-	pass
 
 func play_branchA():
 	scenePlayer.play("BranchA")
@@ -13,6 +12,9 @@ func play_branchA():
 func play_branchB():
 	scenePlayer.play("BranchB")
 
+
+func get_gun():
+	Global.hasGun = true
 
 func _on_UpButton_pressed():
 	play_branchB()

@@ -1,3 +1,7 @@
 extends Node
 
-var health:int = 4
+onready var health:int = 3
+
+onready var hasGun:bool = false
+
+

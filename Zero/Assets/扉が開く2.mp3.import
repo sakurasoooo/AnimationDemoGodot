@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/扉が開く2.mp3-1ed4e8868965ba0d270df47d220918cc.mp3str"
+
+[deps]
+
+source_file="res://Zero/Assets/扉が開く2.mp3"
+dest_files=[ "res://.import/扉が開く2.mp3-1ed4e8868965ba0d270df47d220918cc.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
