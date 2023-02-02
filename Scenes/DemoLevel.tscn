@@ -482,7 +482,7 @@ position = Vector2( -112, 1 )
 
 [node name="PlayerSprites" parent="YSort/StaringPoint/Player" index="1"]
 animation = "IdleLeft"
-frame = 1
+frame = 0
 
 [node name="EnemyAlternate" parent="YSort" instance=ExtResource( 11 )]
 position = Vector2( 376, 240 )
@@ -503,7 +503,7 @@ modulate = Color( 1, 0.984314, 0, 1 )
 position = Vector2( 398, 43 )
 frames = SubResource( 10 )
 animation = "Shine"
-frame = 2
+frame = 1
 playing = true
 
 [node name="Choose" type="Control" parent="."]
