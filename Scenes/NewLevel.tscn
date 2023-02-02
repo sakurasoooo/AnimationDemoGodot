@@ -662,7 +662,7 @@ position = Vector2( 31.004, 288 )
 
 [node name="PlayerSprites" parent="YSort/StaringPoint/Player" index="1"]
 animation = "RunRight"
-frame = 3
+frame = 2
 
 [node name="EnemyA" parent="YSort" instance=ExtResource( 11 )]
 position = Vector2( 168, 256 )
