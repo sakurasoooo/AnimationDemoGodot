@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/r7.mp3-4bd38c1eb2765c0e17ccfacc2e0b6018.mp3str"
+
+[deps]
+
+source_file="res://Zero/Assets/r7.mp3"
+dest_files=[ "res://.import/r7.mp3-4bd38c1eb2765c0e17ccfacc2e0b6018.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

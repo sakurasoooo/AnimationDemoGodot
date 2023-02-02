@@ -13,6 +13,10 @@ config_version=4
 config/name="Animation Demo"
 run/main_scene="res://Scenes/MainMenu.tscn"
 
+[autoload]
+
+Gobal="*res://Zero/Scripts/Gobal.gd"
+
 [display]
 
 window/size/width=480

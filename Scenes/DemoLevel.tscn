@@ -1,18 +1,398 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Imports/Laboratory.tres" type="TileSet" id=1]
 [ext_resource path="res://Objects/Door.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/DemoLevel.gd" type="Script" id=3]
 [ext_resource path="res://Objects/Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Zero/Assets/r7.mp3" type="AudioStream" id=5]
+[ext_resource path="res://Zero/Assets/Shine.png" type="Texture" id=6]
+[ext_resource path="res://Zero/UpArrow.tres" type="Texture" id=7]
+[ext_resource path="res://Zero/LeftArrow.tres" type="Texture" id=8]
+[ext_resource path="res://Zero/Assets/pistol.png" type="Texture" id=9]
+
+[sub_resource type="AtlasTexture" id=12]
+flags = 4
+atlas = ExtResource( 9 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=13]
+flags = 4
+atlas = ExtResource( 9 )
+region = Rect2( 64, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=5]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 64, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=6]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 96, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=7]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 128, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=8]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 160, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=9]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 192, 0, 32, 32 )
+
+[sub_resource type="SpriteFrames" id=10]
+animations = [ {
+"frames": [ SubResource( 12 ), SubResource( 13 ) ],
+"loop": true,
+"name": "Get",
+"speed": 2.0
+}, {
+"frames": [ SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ) ],
+"loop": true,
+"name": "Shine",
+"speed": 7.0
+} ]
+
+[sub_resource type="Animation" id=11]
+resource_name = "BranchA"
+length = 6.0
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("YSort/StaringPoint/Player:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( -112, -0.25, 0, 0.25, 0, -178, -0.25, 0, 0.25, 0, -176, -0.25, 0, 0.25, 0, -414, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.9, 2.9, 4.8 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("YSort/StaringPoint/Player:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, -270, -0.25, 0, 0.25, 0, -269, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.9, 2.9, 4.8 )
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("YSort/StaringPoint/Player/PlayerSprites:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 1, 3, 4.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ "IdleLeft", "RunLeft", "RunUp", "RunLeft", "IdleUp" ]
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("BGM:volume_db")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, -80, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 4.8, 5.8 )
+}
+
+[sub_resource type="Animation" id=14]
+resource_name = "BranchB"
+length = 11.0
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("YSort/StaringPoint/Player:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( -112, -0.25, 0, 0.25, 0, -114, -0.25, 0, 0.25, 0, -48, -0.25, 0, 0.25, 0, -49, -0.25, 0, 0.25, 0, -49, -0.25, 0, 0.25, 0, -49, -0.25, 0, 0.25, 0, -111, -0.25, 0, 0.25, 0, -112, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 2, 3, 4.3, 6.3, 7.6, 8.6, 10.7 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("YSort/StaringPoint/Player:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, -177, -0.25, 0, 0.25, 0, -179, -0.25, 0, 0.25, 0, -230, -0.25, 0, 0.25, 0, -230, -0.25, 0, 0.25, 0, -176, -0.25, 0, 0.25, 0, -177, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 2, 3, 4.3, 6.3, 7.6, 8.6, 10.7 )
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("YSort/StaringPoint/Player/PlayerSprites:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.1, 2.1, 3.1, 4.3, 6.4, 7.7, 8.7, 10.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ "RunUp", "RunRight", "RunUp", "IdleUp", "Run", "RunLeft", "Run", "IdleLeft" ]
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("BGM:volume_db")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, -80, -0.25, 0, 0.25, 0, -80, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 4.3, 4.5, 6.1, 6.3 )
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("YSort/Item:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 4.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("YSort/FX:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 5, 6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/6/type = "method"
+tracks/6/path = NodePath(".")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 10.9 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "play_branchA"
+} ]
+}
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("BGM:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("BGM:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("YSort/StaringPoint/Player:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("YSort/StaringPoint/Player:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("YSort/StaringPoint/Player/PlayerSprites:animation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ "RunLeft" ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("YSort/StaringPoint/Player/AudioManager/Navi:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("YSort/Item:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("YSort/FX:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Choose:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "Start"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("BGM:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("BGM:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( -80, -0.25, 0, 0.25, 0, -7.093, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("YSort/StaringPoint/Player:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, -112, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 1, 2 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("YSort/StaringPoint/Player:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 1, 2 )
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("YSort/StaringPoint/Player/PlayerSprites:animation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ "Idle", "RunLeft", "IdleLeft" ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("YSort/StaringPoint/Player/AudioManager/Navi:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 1.9 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Choose:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 1.9, 2.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
 
 [node name="MainLevel" type="Node2D"]
 script = ExtResource( 3 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
-margin_left = -384.0
-margin_top = -256.0
-margin_right = 896.0
-margin_bottom = 576.0
+margin_left = -394.0
+margin_top = -244.0
+margin_right = 886.0
+margin_bottom = 588.0
 color = Color( 0, 0, 0, 1 )
 
 [node name="LabFloor" type="TileMap" parent="."]
@@ -32,7 +412,7 @@ tile_set = ExtResource( 1 )
 cell_size = Vector2( 16, 16 )
 cell_y_sort = true
 format = 1
-tile_data = PoolIntArray( -1, 1610612784, 0, -65536, -1073741769, 0, -65533, -1073741769, 0, -65532, -1073741769, 0, -65531, -1073741769, 0, -65530, -1073741769, 0, -65529, -1073741769, 0, -65528, -1073741769, 0, -65527, -1073741769, 0, -65526, -1073741769, 0, -65525, -1073741769, 0, -65524, -1073741769, 0, -65523, -1073741769, 0, -65522, -1073741769, 0, -65521, -1073741769, 0, -65520, -1073741769, 0, -65519, -1073741769, 0, -65518, -1073741769, 0, -65517, -1073741769, 0, -65516, -1073741769, 0, -65515, -1073741769, 0, -65514, -1073741769, 0, -65513, -1073741769, 0, -65512, -1073741769, 0, -65511, -1073741769, 0, -65510, -1073741769, 0, -65509, -1073741769, 0, -65508, -1073741769, 0, -65507, -1073741769, 0, -65506, -1073741776, 0, 65535, 1610612791, 0, 22, 7, 0, 25, 67, 0, 26, 66, 0, 27, 66, 0, 28, 66, 0, 29, 66, 0, 30, 55, 0, 131071, 1610612791, 0, 65563, 66, 0, 65564, 66, 0, 65565, 66, 0, 65566, 55, 0, 196607, 1610612791, 0, 131094, 7, 0, 131098, 63, 0, 131099, 65, 0, 131102, 55, 0, 262143, 1610612791, 0, 196611, 75, 0, 196615, 75, 0, 196619, 75, 0, 196623, 75, 0, 196638, 55, 0, 327679, 1610612791, 0, 262147, 75, 0, 262151, 75, 0, 262155, 75, 0, 262159, 75, 0, 262164, 2, 0, 262166, 7, 0, 262170, 6, 0, 262172, 6, 0, 262174, 55, 0, 393215, 1610612791, 0, 327699, 9, 0, 327710, 55, 0, 458751, 1610612791, 0, 393242, 3, 0, 393246, 55, 0, 524287, 1610612791, 0, 458755, 75, 0, 458759, 75, 0, 458763, 75, 0, 458767, 75, 0, 458771, 9, 0, 458774, 2, 0, 458776, 2, 0, 458782, 55, 0, 589823, 1610612791, 0, 524291, 75, 0, 524295, 75, 0, 524299, 75, 0, 524303, 75, 0, 524314, 3, 0, 524318, 55, 0, 655359, 1610612791, 0, 589843, 9, 0, 589854, 55, 0, 720895, 1610612791, 0, 655360, 86, 0, 655361, 86, 0, 655362, 20, 0, 655363, 86, 0, 655364, 86, 0, 655365, 86, 0, 655366, 85, 0, 655367, 87, 0, 655368, 85, 0, 655369, 86, 0, 655370, 86, 0, 655371, 20, 0, 655372, 86, 0, 655373, 86, 0, 655374, 86, 0, 655386, 3, 0, 655390, 55, 0, 786431, 1610612791, 0, 720915, 9, 0, 720917, 1610612745, 0, 720926, 55, 0, 851967, 1610612791, 0, 786433, 11, 0, 786435, 11, 0, 786437, 11, 0, 786439, 11, 0, 786441, 11, 0, 786443, 11, 0, 786445, 11, 0, 786462, 55, 0, 917503, 1610612791, 0, 851982, 10, 0, 851987, 83, 0, 851989, 1610612745, 0, 851998, 55, 0, 983039, 1610612791, 0, 917504, 83, 0, 917518, 10, 0, 917527, 69, 0, 917534, 55, 0, 1048575, 1610612791, 0, 983048, 72, 0, 983051, 73, 0, 983054, 10, 0, 983059, 83, 0, 983061, 1610612745, 0, 983070, 55, 0, 1114111, 1610612791, 0, 1048579, -1073741755, 0, 1048580, 71, 0, 1048582, -1073741755, 0, 1048586, -1073741755, 0, 1048596, 66, 0, 1048597, 66, 0, 1048606, 55, 0, 1179647, 1610612791, 0, 1114112, 83, 0, 1114125, 14, 0, 1114142, 55, 0, 1245183, 1610612791, 0, 1179661, 14, 0, 1179678, 55, 0, 1310719, 1610612791, 0, 1245214, 55, 0, 1376255, -1610612688, 0, 1310720, -1610612681, 0, 1310721, -1610612681, 0, 1310722, -1610612681, 0, 1310723, -1610612681, 0, 1310724, -1610612681, 0, 1310725, -1610612681, 0, 1310726, -1610612681, 0, 1310727, -1610612681, 0, 1310728, -1610612681, 0, 1310729, -1610612681, 0, 1310730, -1610612681, 0, 1310731, -1610612681, 0, 1310732, -1610612681, 0, 1310733, -1610612681, 0, 1310734, -1610612681, 0, 1310735, -1610612681, 0, 1310736, -1610612681, 0, 1310737, -1610612681, 0, 1310738, -1610612681, 0, 1310739, -1610612681, 0, 1310740, -1610612681, 0, 1310741, -1610612681, 0, 1310742, -1610612681, 0, 1310743, -1610612681, 0, 1310744, -1610612681, 0, 1310745, -1610612681, 0, 1310746, -1610612681, 0, 1310747, -1610612681, 0, 1310748, -1610612681, 0, 1310749, -1610612681, 0, 1310750, 48, 0 )
+tile_data = PoolIntArray( -1, 1610612784, 0, -65536, -1073741769, 0, -65533, -1073741769, 0, -65532, -1073741769, 0, -65531, -1073741769, 0, -65530, -1073741769, 0, -65529, -1073741769, 0, -65528, -1073741769, 0, -65527, -1073741769, 0, -65526, -1073741769, 0, -65525, -1073741769, 0, -65524, -1073741769, 0, -65523, -1073741769, 0, -65522, -1073741769, 0, -65521, -1073741769, 0, -65520, -1073741769, 0, -65519, -1073741769, 0, -65518, -1073741769, 0, -65517, -1073741769, 0, -65516, -1073741769, 0, -65515, -1073741769, 0, -65514, -1073741769, 0, -65513, -1073741769, 0, -65512, -1073741769, 0, -65511, -1073741769, 0, -65510, -1073741769, 0, -65509, -1073741769, 0, -65508, -1073741769, 0, -65507, -1073741769, 0, -65506, -1073741776, 0, 65535, 1610612791, 0, 22, 7, 0, 25, 67, 0, 26, 66, 0, 27, 66, 0, 28, 66, 0, 29, 66, 0, 30, 55, 0, 131071, 1610612791, 0, 65563, 66, 0, 65564, 66, 0, 65565, 66, 0, 65566, 55, 0, 196607, 1610612791, 0, 131094, 7, 0, 131098, 63, 0, 131099, 65, 0, 131102, 55, 0, 262143, 1610612791, 0, 196611, 75, 0, 196615, 75, 0, 196619, 75, 0, 196623, 75, 0, 196638, 55, 0, 327679, 1610612791, 0, 262147, 75, 0, 262151, 75, 0, 262155, 75, 0, 262159, 75, 0, 262164, 2, 0, 262166, 7, 0, 262170, 6, 0, 262172, 6, 0, 262174, 55, 0, 393215, 1610612791, 0, 327699, 9, 0, 327710, 55, 0, 458751, 1610612791, 0, 393242, 3, 0, 393246, 55, 0, 524287, 1610612791, 0, 458755, 75, 0, 458759, 75, 0, 458763, 75, 0, 458767, 75, 0, 458771, 9, 0, 458774, 2, 0, 458776, 2, 0, 458782, 55, 0, 589823, 1610612791, 0, 524291, 75, 0, 524295, 75, 0, 524299, 75, 0, 524303, 75, 0, 524314, 3, 0, 524318, 55, 0, 655359, 1610612791, 0, 589843, 9, 0, 589854, 55, 0, 720895, 1610612791, 0, 655360, 86, 0, 655361, 86, 0, 655362, 20, 0, 655363, 86, 0, 655364, 86, 0, 655365, 86, 0, 655366, 85, 0, 655367, 87, 0, 655368, 85, 0, 655369, 86, 0, 655370, 86, 0, 655371, 20, 0, 655372, 86, 0, 655373, 86, 0, 655374, 86, 0, 655386, 3, 0, 655390, 55, 0, 786431, 1610612791, 0, 720915, 9, 0, 720917, 1610612745, 0, 720926, 55, 0, 851967, 1610612791, 0, 786433, 11, 0, 786435, 11, 0, 786437, 11, 0, 786439, 11, 0, 786441, 11, 0, 786443, 11, 0, 786445, 11, 0, 786462, 55, 0, 917503, 1610612791, 0, 851982, 10, 0, 851987, 83, 0, 851989, 1610612745, 0, 851998, 55, 0, 983039, 1610612791, 0, 917504, 83, 0, 917518, 10, 0, 917527, 69, 0, 917534, 55, 0, 1048575, 1610612791, 0, 983048, 72, 0, 983051, 73, 0, 983054, 10, 0, 983059, 83, 0, 983061, 1610612745, 0, 983070, 55, 0, 1114111, 1610612791, 0, 1048579, -1073741755, 0, 1048580, 71, 0, 1048582, -1073741755, 0, 1048586, -1073741755, 0, 1048606, 55, 0, 1179647, 1610612791, 0, 1114112, 83, 0, 1114125, 14, 0, 1114142, 55, 0, 1245183, 1610612791, 0, 1179661, 14, 0, 1179678, 55, 0, 1310719, 1610612791, 0, 1245214, 55, 0, 1376255, -1610612688, 0, 1310720, -1610612681, 0, 1310721, -1610612681, 0, 1310722, -1610612681, 0, 1310723, -1610612681, 0, 1310724, -1610612681, 0, 1310725, -1610612681, 0, 1310726, -1610612681, 0, 1310727, -1610612681, 0, 1310728, -1610612681, 0, 1310729, -1610612681, 0, 1310730, -1610612681, 0, 1310731, -1610612681, 0, 1310732, -1610612681, 0, 1310733, -1610612681, 0, 1310734, -1610612681, 0, 1310735, -1610612681, 0, 1310736, -1610612681, 0, 1310737, -1610612681, 0, 1310738, -1610612681, 0, 1310739, -1610612681, 0, 1310740, -1610612681, 0, 1310741, -1610612681, 0, 1310742, -1610612681, 0, 1310743, -1610612681, 0, 1310744, -1610612681, 0, 1310745, -1610612681, 0, 1310746, -1610612681, 0, 1310747, -1610612681, 0, 1310748, -1610612681, 0, 1310749, -1610612681, 0, 1310750, 48, 0 )
 
 [node name="LabLarge" type="TileMap" parent="YSort"]
 tile_set = ExtResource( 1 )
@@ -45,3 +425,69 @@ tile_data = PoolIntArray( 458764, 13, 0, 458765, 13, 0, 458766, 13, 0 )
 position = Vector2( 448, 288 )
 
 [node name="Player" parent="YSort/StaringPoint" instance=ExtResource( 4 )]
+
+[node name="PlayerSprites" parent="YSort/StaringPoint/Player" index="1"]
+animation = "RunLeft"
+frame = 2
+
+[node name="FX" type="AnimatedSprite" parent="YSort"]
+visible = false
+modulate = Color( 1, 0.984314, 0, 1 )
+position = Vector2( 400, 43 )
+z_index = 1
+frames = SubResource( 10 )
+animation = "Get"
+playing = true
+
+[node name="Item" type="AnimatedSprite" parent="YSort"]
+modulate = Color( 1, 0.984314, 0, 1 )
+position = Vector2( 398, 43 )
+frames = SubResource( 10 )
+animation = "Shine"
+frame = 3
+playing = true
+
+[node name="Choose" type="Control" parent="."]
+visible = false
+anchor_left = 0.605
+anchor_top = 0.735
+anchor_right = 0.61
+anchor_bottom = 0.735
+margin_left = 322.0
+margin_top = 233.0
+margin_right = 361.6
+margin_bottom = 273.0
+
+[node name="UpButton" type="TextureButton" parent="Choose"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture_normal = ExtResource( 7 )
+
+[node name="LeftButton" type="TextureButton" parent="Choose"]
+margin_left = -39.0
+margin_top = 41.0
+margin_right = 1.0
+margin_bottom = 81.0
+texture_normal = ExtResource( 8 )
+
+[node name="Label" type="Label" parent="Choose"]
+margin_left = -58.0
+margin_top = 96.0
+margin_right = 112.0
+margin_bottom = 110.0
+text = "Use LMB choose Direction"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+reset_on_save = false
+anims/BranchA = SubResource( 11 )
+anims/BranchB = SubResource( 14 )
+anims/RESET = SubResource( 1 )
+anims/Start = SubResource( 2 )
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+
+[connection signal="pressed" from="Choose/UpButton" to="." method="_on_UpButton_pressed"]
+[connection signal="pressed" from="Choose/LeftButton" to="." method="_on_LeftButton_pressed"]
+
+[editable path="YSort/StaringPoint/Player"]
