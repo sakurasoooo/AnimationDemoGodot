@@ -5,6 +5,7 @@ signal death()
 onready var anim = $PlayerSprites
 onready var hud = $Canvas
 onready var shootSfx = $AudioManager/Explosion
+onready var shootPressed = 0.5
 
 var target
 
@@ -24,7 +25,12 @@ func _on_Area2D_area_entered(area:Area2D):
 	target = area
 
 func _process(delta):
-	if Input.is_action_pressed("Shoot") and Global.hasGun:
+	shootPressed -= delta
+
+	if Input.is_action_pressed("Shoot"):
+		shootPressed = 1.0
+
+	if shootPressed > 0 and Global.hasGun:
 		if is_instance_valid(target):
 			if target.attacking:
 				var name = anim.animation

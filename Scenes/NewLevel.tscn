@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Imports/Laboratory.tres" type="TileSet" id=1]
 [ext_resource path="res://Objects/Door.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Zero/UpArrow.tres" type="Texture" id=7]
 [ext_resource path="res://Zero/LeftArrow.tres" type="Texture" id=8]
 [ext_resource path="res://Zero/Assets/8bit勝利2.mp3" type="AudioStream" id=9]
+[ext_resource path="res://Lights.tres" type="Texture" id=10]
 [ext_resource path="res://Objects/Enemy.tscn" type="PackedScene" id=11]
 
 [sub_resource type="Animation" id=15]
@@ -380,7 +381,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 2.9, 3.8, 6.5, 7.7, 10.1, 12.7 ),
+"times": PoolRealArray( 0, 2.9, 3.8, 6.5, 7.7, 10.1, 12.2 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ "RunRight", "RunUp", "RunLeft", "RunUp", "RunRight", "RunUp", "IdleUp" ]
@@ -392,10 +393,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 2.8, 3.7, 6.4, 7.6, 10, 12.6 ),
+"times": PoolRealArray( 0, 2.8, 3.7, 6.4, 7.6, 10, 12.2 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 355, 0 ), Vector2( 355, -60 ), Vector2( 0, -60 ), Vector2( 0, -140 ), Vector2( 230, -140 ), Vector2( 230, -270 ) ]
+"values": [ Vector2( 0, 0 ), Vector2( 355, 0 ), Vector2( 355, -60 ), Vector2( 0, -60 ), Vector2( 0, -140 ), Vector2( 230, -140 ), Vector2( 230, -310 ) ]
 }
 tracks/2/type = "method"
 tracks/2/path = NodePath("YSort/EnemyA")
@@ -662,19 +663,44 @@ position = Vector2( 31.004, 288 )
 
 [node name="PlayerSprites" parent="YSort/StaringPoint/Player" index="1"]
 animation = "RunRight"
-frame = 2
+frame = 3
+
+[node name="Light2D" type="Light2D" parent="YSort/StaringPoint/Player"]
+texture = ExtResource( 10 )
+mode = 2
 
 [node name="EnemyA" parent="YSort" instance=ExtResource( 11 )]
 position = Vector2( 168, 256 )
+z_index = 1
+
+[node name="Light2D" type="Light2D" parent="YSort/EnemyA"]
+texture = ExtResource( 10 )
+texture_scale = 0.25
+mode = 2
 
 [node name="EnemyC" parent="YSort" instance=ExtResource( 11 )]
 position = Vector2( 184, 96 )
 
+[node name="Light2D" type="Light2D" parent="YSort/EnemyC"]
+texture = ExtResource( 10 )
+texture_scale = 0.25
+mode = 2
+
 [node name="EnemyB" parent="YSort" instance=ExtResource( 11 )]
 position = Vector2( 216, 176 )
 
+[node name="Light2D" type="Light2D" parent="YSort/EnemyB"]
+texture = ExtResource( 10 )
+texture_scale = 0.25
+mode = 2
+
 [node name="EnemyD" parent="YSort" instance=ExtResource( 11 )]
 position = Vector2( 264, 32 )
+
+[node name="Light2D" type="Light2D" parent="YSort/EnemyD"]
+texture = ExtResource( 10 )
+texture_scale = 0.25
+mode = 2
 
 [node name="Choose" type="Control" parent="."]
 visible = false
@@ -737,6 +763,10 @@ text = "Press \"SPACE\""
 align = 1
 valign = 1
 uppercase = true
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+z_index = -2
+color = Color( 0.0588235, 0.0588235, 0.0588235, 1 )
 
 [connection signal="death" from="YSort/StaringPoint/Player" to="." method="_on_Player_death"]
 [connection signal="pressed" from="Choose/UpButton" to="." method="_on_UpButton_pressed"]
