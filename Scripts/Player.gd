@@ -33,6 +33,7 @@ func _process(delta):
 	if shootPressed > 0 and Global.hasGun:
 		if is_instance_valid(target):
 			if target.attacking:
+				shootPressed = 0
 				var name = anim.animation
 				anim.play("ShootUp")
 				anim.speed_scale = 4
